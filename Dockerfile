@@ -1,14 +1,14 @@
-FROM buildpack-deps:xenial
+# clang Repo seems to be not working right now
+# FROM buildpack-deps:xenial
+FROM sbx320/clang:svn
 
 # Clang 4.0
-
-FROM buildpack-deps:xenial
-RUN apt-get update && apt-get install -y software-properties-common
-RUN add-apt-repository -s "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" && \
-  wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+#RUN apt-get update && apt-get install -y software-properties-common
+#RUN add-apt-repository -s "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" && \
+#  wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
   
-RUN apt-get update && apt-get install -y clang-4.0 && \
-  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get update && apt-get install -y clang-4.0 && \
+#  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
   
 # Setup clang as default compiler
 ENV CC clang-4.0
