@@ -11,10 +11,10 @@ FROM sbx320/clang:svn
 #  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
   
 # Setup clang as default compiler
-ENV CC clang-4.0
-ENV CXX clang++-4.0
-RUN ln -s /usr/bin/clang-4.0 /bin/cc &&\
-  ln -s /usr/bin/clang++-4.0 /bin/cxx
+#ENV CC clang-4.0
+#ENV CXX clang++-4.0
+#RUN ln -s /usr/bin/clang-4.0 /bin/cc &&\
+#  ln -s /usr/bin/clang++-4.0 /bin/cxx
   
 # Boost
 ARG boost_version=1.62.0
