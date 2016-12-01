@@ -27,3 +27,13 @@ RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/$
     && ./bootstrap.sh \
     && ./b2 --without-python -j 4 link=shared runtime-link=shared install \
     && cd .. && rm -rf ${boost_dir} 
+
+# Premake5
+RUN mkdir -p /tmp/premake \
+  && git clone https://github.com/premake/premake-core.git /tmp/premake \
+  && cd /tmp/premake \
+  && make -f Bootstrap.mak linux \
+  && ./bin/release/premake5 embed \
+  && cp ./bin/release/premake5 /bin \
+  && rm -rf /tmp/premake
+  
