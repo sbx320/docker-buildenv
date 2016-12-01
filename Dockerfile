@@ -15,7 +15,13 @@ FROM sbx320/clang:svn
 #ENV CXX clang++-4.0
 #RUN ln -s /usr/bin/clang-4.0 /bin/cc &&\
 #  ln -s /usr/bin/clang++-4.0 /bin/cxx
-  
+ 
+# GCC 7 (mainly for a modern libstdc++ with c++17)
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
+  && apt-get update \
+  && apt-get install -y gcc-7 \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ 
 # Boost
 ARG boost_version=1.62.0
 ARG boost_dir=boost_1_62_0
