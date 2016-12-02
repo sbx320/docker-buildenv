@@ -5,19 +5,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		ca-certificates \
 		curl \
 		wget \
-	&& rm -rf /var/lib/apt/lists/*
-  
-RUN apt-get update && apt-get install -y --no-install-recommends \
 		bzr \
 		git \
 		mercurial \
 		openssh-client \
 		subversion \
-		\
 		procps \
-	&& rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
 		autoconf \
 		automake \
 		bzip2 \
@@ -55,9 +48,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		patch \
 		xz-utils \
 		zlib1g-dev \
+		software-properties-common \
+		python-software-properties \
 	&& rm -rf /var/lib/apt/lists/*
  
-# GCC 7 (mainly for a modern libstdc++ with c++17)
+# GCC 7 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
   && apt-get update \
   && apt-get install -y gcc-7 \
