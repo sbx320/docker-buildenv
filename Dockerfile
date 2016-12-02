@@ -55,7 +55,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # GCC 7 
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
   && apt-get update \
-  && apt-get install -y gcc-7 \
+  && apt-get install -y gcc-7 g++-7 \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
  
 # Boost
