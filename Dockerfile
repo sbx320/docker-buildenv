@@ -58,11 +58,10 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
   && apt-get install -y gcc-7 g++-7 \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Clang 4.0
-RUN add-apt-repository -s "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" && \
-  wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-  
-RUN apt-get update && apt-get install -y clang-4.0 && \
+# Clang 4.0... use the wily repo as zesty doesn't exist, yakkety doesn't work (404) and xenial is broken... yay
+RUN add-apt-repository -s "deb http://apt.llvm.org/wily/ llvm-toolchain-wily main" && \
+  wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - &&\
+  apt-get update && apt-get install -y clang-4.0 && \
   apt-get clean && rm -rf /var/lib/apt/lists/* 
   
 # Setup clang as default compiler
