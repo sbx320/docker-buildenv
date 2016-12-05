@@ -1,10 +1,10 @@
 # Essentially a FROM buildpack-deps:zesty
 FROM sbx320/buildpack-deps-zesty
 
-# GCC 7 for modern libstdc++
+# GCC 7 for modern libstdc++ and ccache
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
   && apt-get update \
-  && apt-get install -y gcc-7 g++-7 \
+  && apt-get install -y gcc-7 g++-7 ccache \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Clang 4.0... maybe at some point when repos work again
