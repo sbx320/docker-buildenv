@@ -31,7 +31,7 @@ RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/$
     && rm ${boost_dir}.tar.gz \
     && cd ${boost_dir} \
     && ./bootstrap.sh \
-    && ./b2 --without-python -j 4 link=shared runtime-link=shared install \
+    && ./b2 --without-python -j 4 link=static runtime-link=shared install \
     && cd .. && rm -rf ${boost_dir} 
 
 # Premake5
