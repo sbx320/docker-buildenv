@@ -43,3 +43,7 @@ RUN mkdir -p /tmp/premake \
   && cp ./bin/release/premake5 /bin \
   && rm -rf /tmp/premake
   
+# libpq
+RUN apt-get update \
+  && apt-get install -y libpq5-dev
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
