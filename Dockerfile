@@ -19,8 +19,11 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
 #RUN ln -s /usr/bin/clang-4.0 /bin/cc &&\
 #  ln -s /usr/bin/clang++-4.0 /bin/cxx
 
+# Setup Default Compiler
 ENV CC gcc-7
 ENV CXX g++-7
+RUN ln -sf g++-7 /usr/bin/g++ && \
+    ln -sf gcc-7 /usr/bin/gcc
 
 # Boost
 ARG boost_version=1.62.0
